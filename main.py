@@ -27,6 +27,12 @@ def send_file_func():
               logging.error("send file fail")
             else:
                 logging.info("send file:"+file+'success')
+            try:
+                os.remove('./file/'+file)
+            except:
+                logging.error("remove file fail")
+            else:
+                logging.info("remove file success")
     timer = threading.Timer(5, send_file_func)
     timer.start()
 
