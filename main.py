@@ -10,14 +10,13 @@ import shutil
 
 # 日志配置
 ticks = time.time()
-log_file_name = str(ticks)+'logging.info'
+log_file_name = "./log/"+str(ticks)+'logging.info'
 logging.basicConfig(filename=log_file_name, level=logging.INFO, format='%(asctime)s %(levelname)s  %(message)s %(pathname)s')
 
-#配置文件
+# 读取配置文件
 config_path  = "./default.cfg"
 config_raw = configparser.RawConfigParser()
 config_raw.read(config_path, encoding="utf-8")
-
 group_name = config_raw.get('default', 'group')
 wait_time = config_raw.get('default', 'wait_time')
 file_action = config_raw.get('default', 'file_action')
@@ -66,6 +65,7 @@ def send_file_func():
                     logging.error("move file "+file+"fail")
                 else:
                     logging.info("move file"+file+"success")
+
     timer_send_func = threading.Timer(int(wait_time), send_file_func)
     timer_send_func.start()
 

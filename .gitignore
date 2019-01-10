@@ -3,3 +3,4 @@ file/
 venv
 .idea
 file_backup/
+log/
