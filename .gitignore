@@ -1,5 +1,5 @@
 *.info
-file/*
+file/
 venv
 .idea
-file_backup/*
+file_backup/
